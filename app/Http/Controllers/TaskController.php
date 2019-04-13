@@ -45,7 +45,12 @@ class TaskController extends Controller
         
         return $task;
     }
-
+    
+    /**
+     * @param int $id
+     * @return int
+     * @throws \Exception
+     */
     public function destroy($id)
     {
         $task = Task::findOrFail($id);
