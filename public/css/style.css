@@ -1,0 +1,9 @@
+body, .tasks-list {
+    padding-top: 20px;
+}
+.pull-right {
+    float: right;
+}
+.done {
+    display: none;
+}
