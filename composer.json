@@ -14,7 +14,8 @@
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "zircote/swagger-php": "^3.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -54,7 +55,18 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "start": "sudo /opt/lampp/lampp start",
+        "start": [
+            "sudo /opt/lampp/lampp start",
+            "@php artisan serve"
+        ],
+        "cache": [
+            "@php artisan optimize",
+            "php artisan cache:clear",
+            "php artisan route:cache",
+            "php artisan view:clear",
+            "php artisan config:cache",
+            "composer dump-autoload -o"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
