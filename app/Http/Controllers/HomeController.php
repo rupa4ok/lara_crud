@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $project  = Project::find(1);
+        $tasks = $project->tasks;
+        dd($tasks);
         return view('home');
     }
 }

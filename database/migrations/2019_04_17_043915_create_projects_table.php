@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTasksTable extends Migration
+class CreateProjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->boolean('completed')->default(false);
-            $table->integer('project_id')->unsigned()->default(1);
-            
+        Schema::create('projects', function (Blueprint $table) {
+            $table->bigIncrements('id')->index();
+            $table->string('title');
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *
