@@ -14,8 +14,11 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id')->index();
             $table->string('title');
+            $table->string('status')->default(0);
+            $table->date('time')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('projects');
     }
 }

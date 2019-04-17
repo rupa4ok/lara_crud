@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Project;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Task;
+use App\Models\Task;
 
-class TaskController extends Controller
+class TaskingController extends Controller
 {
 
     public function index()

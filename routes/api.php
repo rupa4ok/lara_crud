@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 
-Route::resource('tasks', 'TaskController', [
+Route::resource('tasks', 'Api\TaskingController', [
     'except' => ['create', 'edit', 'show']
     ]);
 

@@ -14,10 +14,12 @@ class CreateTasksTable extends Migration
     public function up()
     {
         Schema::create('tasks', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id');
             $table->string('name');
             $table->boolean('completed')->default(false);
-            $table->integer('project_id')->unsigned()->default(1);
+    
+            $table->integer('project_id')->unsigned();
             
             $table->timestamps();
         });

@@ -15,9 +15,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $project  = Project::find(1);
-        $tasks = $project->tasks;
-        dd($tasks);
-        return view('home');
+        $projects  = Project::with('task')->paginate(9);
+        return view('home', compact('projects'));
     }
 }

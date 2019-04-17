@@ -7,3 +7,11 @@ body, .tasks-list {
 .done {
     display: none;
 }
+.project-item {
+    border: 1px solid #b0d4f1;
+    min-height: 150px;
+    padding: 30px;
+}
+.task {
+    padding-bottom: 30px;
+}

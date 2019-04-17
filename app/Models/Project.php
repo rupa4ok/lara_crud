@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    public function tasks()
+    public function task()
     {
         return $this->hasMany('App\Models\Task');
     }
