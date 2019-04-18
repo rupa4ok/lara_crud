@@ -4,6 +4,9 @@ body, .tasks-list {
 .pull-right {
     float: right;
 }
+.pull-left {
+    float: left;
+}
 .done {
     display: none;
 }
@@ -14,4 +17,10 @@ body, .tasks-list {
 }
 .task {
     padding-bottom: 30px;
+}
+.card-header .pull-left {
+    width: 80%;
+}
+.card-header .pull-right {
+    width: 20%;
 }

@@ -19,7 +19,7 @@
                                 @foreach($projects as $project)
                                 <div class="col-md-4 task">
                                     <div class="project-item">
-                                        <span class="project-title"><a href="{{ route('task') }}">{{ $project->title }}</a></span>
+                                        <span class="project-title"><a href="{{ route('task.show', [ 'project' => $project ]) }}">{{ $project->title }}</a></span>
                                         <span class="data">{{ $project->time }}</span>
                                         <span class="status">{{ $project->status }}</span>
                                         <span>Задач: {{ $project->task->count() }}</span>
@@ -31,7 +31,7 @@
                                 {{ $projects->render() }}
                             </div>
                         </div>
-                    
+                </div>
             </div>
         </div>
     </div>

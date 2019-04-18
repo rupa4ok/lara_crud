@@ -28,4 +28,10 @@ class Task extends Model
     {
         return $this->belongsTo('App\Models\Task');
     }
+    
+    public static function getReffer()
+    {
+        $url = explode("/",$_SERVER["HTTP_REFERER"]);
+        return $url['4'];
+    }
 }

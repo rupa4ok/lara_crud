@@ -18,4 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/task', 'TasksController@index')->name('task');
+
+$groupData = [
+];
+
+Route::group($groupData, function () {
+    $method = ['index', 'edit' , 'update', 'create', 'show'];
+    Route::resource('task', 'Api\TaskController')
+        ->only($method)
+        ->names('task');
+});

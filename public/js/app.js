@@ -1812,10 +1812,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.fetchData();
@@ -1842,7 +1838,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchData: function fetchData() {
       var _this = this;
 
-      axios.get('/api/tasks').then(function (res) {
+      axios.get('/api/tasks/').then(function (res) {
         _this.tasks = res.data;
       })["catch"](function (err) {
         console.log(err);
@@ -37173,243 +37169,227 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("My tasks")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "input-group" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.task.name,
-                    expression: "task.name"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text" },
-                domProps: { value: _vm.task.name },
-                on: {
-                  keydown: function($event) {
-                    if (
-                      !$event.type.indexOf("key") &&
-                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                    ) {
-                      return null
-                    }
-                    return _vm.create($event)
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.task, "name", $event.target.value)
-                  }
+  return _c("div", { staticClass: "col-md-6" }, [
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-header" }, [_vm._v("My tasks")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.task.name,
+                expression: "task.name"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.task.name },
+            on: {
+              keydown: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
                 }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "input-group-btn" }, [
-                _c(
-                  "button",
-                  { staticClass: "btn btn-success", on: { click: _vm.create } },
-                  [_vm._v("Добавить задачу")]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "tasks-list" }, [
-              _c("h5", [
-                _vm._v(
-                  "Задач в работе: " +
-                    _vm._s(_vm.remainingTasks()) +
-                    " из " +
-                    _vm._s(_vm.tasks.length)
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "ul",
-                { staticClass: "list-unstyled" },
-                _vm._l(_vm.tasks, function(task) {
-                  return _c(
-                    "li",
-                    { key: task.id, class: { done: task.completed } },
-                    [
-                      _c("div", { staticClass: "checkbox" }, [
-                        _c("label", [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: task.completed,
-                                expression: "task.completed"
-                              }
-                            ],
-                            attrs: { type: "checkbox" },
-                            domProps: {
-                              checked: Array.isArray(task.completed)
-                                ? _vm._i(task.completed, null) > -1
-                                : task.completed
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.done(task)
-                              },
-                              change: function($event) {
-                                var $$a = task.completed,
-                                  $$el = $event.target,
-                                  $$c = $$el.checked ? true : false
-                                if (Array.isArray($$a)) {
-                                  var $$v = null,
-                                    $$i = _vm._i($$a, $$v)
-                                  if ($$el.checked) {
-                                    $$i < 0 &&
-                                      _vm.$set(
-                                        task,
-                                        "completed",
-                                        $$a.concat([$$v])
-                                      )
-                                  } else {
-                                    $$i > -1 &&
-                                      _vm.$set(
-                                        task,
-                                        "completed",
-                                        $$a
-                                          .slice(0, $$i)
-                                          .concat($$a.slice($$i + 1))
-                                      )
-                                  }
-                                } else {
-                                  _vm.$set(task, "completed", $$c)
-                                }
-                              }
-                            }
-                          }),
-                          _vm._v(
-                            " " +
-                              _vm._s(task.name) +
-                              "\n                                    "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "pull-right" }, [
-                          _c(
-                            "a",
-                            {
-                              attrs: { href: "#" },
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                  return _vm.remove(task)
-                                }
-                              }
-                            },
-                            [_vm._v("x")]
-                          )
-                        ])
-                      ])
-                    ]
-                  )
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c("h5", [_vm._v("Выполнено: " + _vm._s(_vm.completedTasks()))]),
-              _vm._v(" "),
-              _c(
-                "ul",
-                { staticClass: "list-unstyled" },
-                _vm._l(_vm.tasks, function(task) {
-                  return _c(
-                    "li",
-                    { key: task.id, class: { done: !task.completed } },
-                    [
-                      _c("div", { staticClass: "checkbox" }, [
-                        _c("label", [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: task.completed,
-                                expression: "task.completed"
-                              }
-                            ],
-                            attrs: { type: "checkbox" },
-                            domProps: {
-                              checked: Array.isArray(task.completed)
-                                ? _vm._i(task.completed, null) > -1
-                                : task.completed
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.done(task)
-                              },
-                              change: function($event) {
-                                var $$a = task.completed,
-                                  $$el = $event.target,
-                                  $$c = $$el.checked ? true : false
-                                if (Array.isArray($$a)) {
-                                  var $$v = null,
-                                    $$i = _vm._i($$a, $$v)
-                                  if ($$el.checked) {
-                                    $$i < 0 &&
-                                      _vm.$set(
-                                        task,
-                                        "completed",
-                                        $$a.concat([$$v])
-                                      )
-                                  } else {
-                                    $$i > -1 &&
-                                      _vm.$set(
-                                        task,
-                                        "completed",
-                                        $$a
-                                          .slice(0, $$i)
-                                          .concat($$a.slice($$i + 1))
-                                      )
-                                  }
-                                } else {
-                                  _vm.$set(task, "completed", $$c)
-                                }
-                              }
-                            }
-                          }),
-                          _vm._v(
-                            " " +
-                              _vm._s(task.name) +
-                              "\n                                    "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "pull-right" }, [
-                          _c(
-                            "a",
-                            {
-                              attrs: { href: "#" },
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                  return _vm.remove(task)
-                                }
-                              }
-                            },
-                            [_vm._v("x")]
-                          )
-                        ])
-                      ])
-                    ]
-                  )
-                }),
-                0
-              )
-            ])
+                return _vm.create($event)
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.task, "name", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "input-group-btn" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-success", on: { click: _vm.create } },
+              [_vm._v("Добавить задачу")]
+            )
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "tasks-list" }, [
+          _c("h5", [
+            _vm._v(
+              "Задач в работе: " +
+                _vm._s(_vm.remainingTasks()) +
+                " из " +
+                _vm._s(_vm.tasks.length)
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "list-unstyled" },
+            _vm._l(_vm.tasks, function(task) {
+              return _c(
+                "li",
+                { key: task.id, class: { done: task.completed } },
+                [
+                  _c("div", { staticClass: "checkbox" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: task.completed,
+                            expression: "task.completed"
+                          }
+                        ],
+                        attrs: { type: "checkbox" },
+                        domProps: {
+                          checked: Array.isArray(task.completed)
+                            ? _vm._i(task.completed, null) > -1
+                            : task.completed
+                        },
+                        on: {
+                          click: function($event) {
+                            return _vm.done(task)
+                          },
+                          change: function($event) {
+                            var $$a = task.completed,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(task, "completed", $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    task,
+                                    "completed",
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(task, "completed", $$c)
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(
+                        " " +
+                          _vm._s(task.name) +
+                          "\n                            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "pull-right" }, [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.remove(task)
+                            }
+                          }
+                        },
+                        [_vm._v("x")]
+                      )
+                    ])
+                  ])
+                ]
+              )
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("h5", [_vm._v("Выполнено: " + _vm._s(_vm.completedTasks()))]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "list-unstyled" },
+            _vm._l(_vm.tasks, function(task) {
+              return _c(
+                "li",
+                { key: task.id, class: { done: !task.completed } },
+                [
+                  _c("div", { staticClass: "checkbox" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: task.completed,
+                            expression: "task.completed"
+                          }
+                        ],
+                        attrs: { type: "checkbox" },
+                        domProps: {
+                          checked: Array.isArray(task.completed)
+                            ? _vm._i(task.completed, null) > -1
+                            : task.completed
+                        },
+                        on: {
+                          click: function($event) {
+                            return _vm.done(task)
+                          },
+                          change: function($event) {
+                            var $$a = task.completed,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(task, "completed", $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    task,
+                                    "completed",
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(task, "completed", $$c)
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(
+                        " " +
+                          _vm._s(task.name) +
+                          "\n                            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "pull-right" }, [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.remove(task)
+                            }
+                          }
+                        },
+                        [_vm._v("x")]
+                      )
+                    ])
+                  ])
+                ]
+              )
+            }),
+            0
+          )
         ])
       ])
     ])

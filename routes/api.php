@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 
-Route::resource('tasks', 'Api\TaskingController', [
-    'except' => ['create', 'edit', 'show']
+Route::resource('tasks', 'Api\TaskController', [
+    'except' => ['create']
     ]);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

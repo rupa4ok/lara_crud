@@ -3,26 +3,23 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Models\Task;
 
-class TaskingController extends Controller
+class TaskController extends Controller
 {
-
+    
     public function index()
     {
-        return Task::latest()->get();
-    }
-    
-    public function create()
-    {
-        //
+        return Task::latest()->where('project_id', Task::getReffer())->get();
     }
     
     public function store(Request $request)
     {
         $task = new Task();
         $task->name = $request->name;
+        $task->project_id = Task::getReffer();
         $task->save();
         
         return $task;
@@ -30,12 +27,8 @@ class TaskingController extends Controller
     
     public function show($id)
     {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
+        $project = Project::findOrFail($id);
+        return view('task', [ 'id' => $id, 'project' => $project ]);
     }
 
     public function update(Request $request, $id)
